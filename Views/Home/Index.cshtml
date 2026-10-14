@@ -1,8 +1,27 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container py-5">
+    <div class="row align-items-center">
+        <div class="col-lg-7">
+            <h1 class="display-4">Bienvenido a Instituto Nova</h1>
+            <p class="lead text-muted">Gestiona matrículas y estudiantes de manera rápida y sencilla.</p>
+
+            <div class="mt-4">
+                <a class="btn btn-primary btn-lg me-2" asp-controller="Alumnos" asp-action="Create">Nueva matrícula</a>
+                <a class="btn btn-outline-primary btn-lg" asp-controller="Alumnos" asp-action="Index">Ver lista de alumnos</a>
+            </div>
+
+            <p class="mt-4 small text-muted">¿Necesitas ayuda? Consulta la documentación o contacta con administración.</p>
+        </div>
+        <div class="col-lg-5 d-none d-lg-block">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Resumen rápido</h5>
+                    <p class="card-text">Añade nuevas matrículas, revisa el estado de los alumnos y administra la información desde el panel de Alumnos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
