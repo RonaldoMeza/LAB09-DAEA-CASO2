@@ -1,0 +1,97 @@
+@model Alumno
+@{
+    ViewData["Title"] = "Nueva matrícula";
+}
+
+<section class="page-heading">
+    <span class="eyebrow">Proceso de admisión</span>
+    <h1>Nueva matrícula</h1>
+    <p class="text-secondary">Completa los datos del alumno. Los campos marcados con * son obligatorios.</p>
+</section>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card form-card border-0 shadow-sm">
+            <div class="card-body p-4 p-md-5">
+                @using (Html.BeginForm("Create", "Alumnos", FormMethod.Post, new { novalidate = "novalidate" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.Id)
+
+                    @Html.ValidationSummary(false, "Revisa los datos indicados:", new { @class = "validation-summary alert alert-danger" })
+
+                    <div class="row g-4">
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Nombres, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control", placeholder = "Ej. María López García", autocomplete = "name" })
+                            @Html.ValidationMessageFor(m => m.Nombres, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="col-md-7">
+                            @Html.LabelFor(m => m.Correo, new { @class = "form-label required" })
+                            @Html.TextBoxFor(m => m.Correo, new { @class = "form-control", type = "email", placeholder = "alumno@correo.com", autocomplete = "email" })
+                            @Html.ValidationMessageFor(m => m.Correo, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="col-md-5">
+                            @Html.LabelFor(m => m.Clave, new { @class = "form-label required" })
+                            @Html.PasswordFor(m => m.Clave, new { @class = "form-control", placeholder = "Mínimo 6 caracteres", autocomplete = "new-password" })
+                            @Html.ValidationMessageFor(m => m.Clave, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Carrera, new { @class = "form-label required" })
+                            @Html.DropDownListFor(m => m.Carrera, (SelectList)ViewBag.Carreras, "Seleccione una carrera", new { @class = "form-select" })
+                            @Html.ValidationMessageFor(m => m.Carrera, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Turno, new { @class = "form-label required d-block" })
+                            <div class="turno-options" role="group" aria-label="Turno">
+                                @foreach (var turno in new[] { "Mañana", "Tarde", "Noche" })
+                                {
+                                    <label class="turno-option">
+                                        @Html.RadioButtonFor(m => m.Turno, turno, new { @class = "form-check-input" })
+                                        <span>@turno</span>
+                                    </label>
+                                }
+                            </div>
+                            @Html.ValidationMessageFor(m => m.Turno, "", new { @class = "text-danger small" })
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-check form-switch scholarship-switch">
+                                @Html.CheckBoxFor(m => m.Becado, new { @class = "form-check-input" })
+                                @Html.LabelFor(m => m.Becado, new { @class = "form-check-label" })
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            @Html.LabelFor(m => m.Observaciones, new { @class = "form-label" })
+                            @Html.TextAreaFor(m => m.Observaciones, 4, 40, new { @class = "form-control", placeholder = "Información adicional relevante (opcional)" })
+                            @Html.ValidationMessageFor(m => m.Observaciones, "", new { @class = "text-danger small" })
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-column flex-sm-row gap-3 mt-5">
+                        <button type="submit" class="btn btn-primary btn-lg">Confirmar matrícula</button>
+                        <a class="btn btn-light btn-lg" href="@Url.Action("Index")">Cancelar</a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <aside class="col-lg-4">
+        <div class="info-panel">
+            <h2 class="h5">Privacidad de la clave</h2>
+            <p>La clave solo demuestra el uso de <code>PasswordFor</code>. Se valida al enviar, pero nunca se almacena ni aparece en las páginas posteriores.</p>
+            <hr />
+            <h2 class="h5">Seguridad del Id</h2>
+            <p class="mb-0">Aunque el formulario incluye un campo oculto, el servidor ignora ese valor y asigna un identificador nuevo.</p>
+        </div>
+    </aside>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

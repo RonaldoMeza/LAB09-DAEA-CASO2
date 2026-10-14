@@ -1,0 +1,37 @@
+@model Alumno
+@{
+    ViewData["Title"] = "Demo de HTML Helpers";
+}
+
+<section class="page-heading">
+    <span class="eyebrow">Laboratorio Razor</span>
+    <h1>TextBox vs. TextBoxFor</h1>
+    <p class="text-secondary">Abre las herramientas de desarrollo del navegador e inspecciona ambos controles.</p>
+</section>
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <article class="card demo-card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <span class="badge text-bg-secondary mb-3">Helper no tipado</span>
+                <pre><code>@@Html.TextBox("Nombres")</code></pre>
+                @Html.TextBox("Nombres", null, new { @class = "form-control", placeholder = "Inspecciona este campo" })
+                <p class="mt-3 mb-0">La cadena <code>"Nombres"</code> genera <code>id="Nombres"</code> y <code>name="Nombres"</code>. Un cambio en el modelo no actualiza automáticamente esa cadena.</p>
+            </div>
+        </article>
+    </div>
+    <div class="col-md-6">
+        <article class="card demo-card h-100 border-0 shadow-sm">
+            <div class="card-body p-4">
+                <span class="badge text-bg-primary mb-3">Helper fuertemente tipado</span>
+                <pre><code>@@Html.TextBoxFor(m =&gt; m.Nombres)</code></pre>
+                @Html.TextBoxFor(m => m.Nombres, new { @class = "form-control", placeholder = "Inspecciona este campo" })
+                <p class="mt-3 mb-0">La expresión obtiene <code>id</code> y <code>name</code> desde la propiedad. El compilador detecta si la propiedad cambia o deja de existir durante una refactorización.</p>
+            </div>
+        </article>
+    </div>
+</div>
+
+<div class="alert alert-info mt-4 mb-0">
+    Ambos controles producen HTML similar y participan en el model binding; <strong>TextBoxFor</strong> ofrece comprobación en compilación y metadatos del modelo.
+</div>

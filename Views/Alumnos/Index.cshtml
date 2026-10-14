@@ -1,0 +1,59 @@
+@model IReadOnlyList<Alumno>
+@{
+    ViewData["Title"] = "Alumnos matriculados";
+}
+
+<section class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3">
+    <div>
+        <span class="eyebrow">Gestión académica</span>
+        <h1>Alumnos matriculados</h1>
+        <p class="text-secondary mb-0">Consulta y administra las matrículas registradas durante esta sesión.</p>
+    </div>
+    <a class="btn btn-primary btn-lg" href="@Url.Action("Create", "Alumnos")">Nueva matrícula</a>
+</section>
+
+@if (Model.Count == 0)
+{
+    <div class="empty-state card border-0 shadow-sm text-center">
+        <div class="empty-icon" aria-hidden="true">+</div>
+        <h2 class="h4">Aún no hay alumnos registrados</h2>
+        <p class="text-secondary">Comienza creando la primera matrícula del instituto.</p>
+        <div><a class="btn btn-outline-primary" href="@Url.Action("Create")">Registrar alumno</a></div>
+    </div>
+}
+else
+{
+    <div class="card border-0 shadow-sm overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Nombres</th>
+                        <th>Correo</th>
+                        <th>Carrera</th>
+                        <th>Turno</th>
+                        <th>Becado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var alumno in Model)
+                {
+                    <tr>
+                        <td><span class="id-badge">#@alumno.Id</span></td>
+                        <td class="fw-semibold">@alumno.Nombres</td>
+                        <td>@alumno.Correo</td>
+                        <td>@alumno.Carrera</td>
+                        <td>@alumno.Turno</td>
+                        <td>
+                            <span class="badge @(alumno.Becado ? "text-bg-success" : "text-bg-secondary")">
+                                @(alumno.Becado ? "Sí" : "No")
+                            </span>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

@@ -1,0 +1,70 @@
+html {
+  font-size: 14px;
+}
+
+:root {
+  --nova-navy: #12233f;
+  --nova-blue: #275dcc;
+  --nova-sky: #eaf1ff;
+  --nova-bg: #f5f7fb;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background: var(--nova-bg);
+  color: #172033;
+}
+
+.app-navbar { background: linear-gradient(110deg, #101f39, #1b3f77); box-shadow: 0 .4rem 1.2rem rgba(18, 35, 63, .18); }
+.navbar-brand { font-weight: 700; letter-spacing: -.02em; }
+.brand-mark { display: grid; place-items: center; width: 2rem; height: 2rem; border-radius: .65rem; background: #fff; color: var(--nova-blue); }
+.page-heading { margin-bottom: 2rem; }
+.page-heading h1 { font-weight: 750; letter-spacing: -.035em; margin: .35rem 0; }
+.eyebrow { color: var(--nova-blue); font-size: .78rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.card { border-radius: 1rem; }
+.form-control, .form-select { min-height: 3rem; border-radius: .7rem; }
+.form-control:focus, .form-select:focus { border-color: #7da3f4; box-shadow: 0 0 0 .22rem rgba(39, 93, 204, .13); }
+.form-label { font-weight: 650; }
+.required::after { content: " *"; color: #c93447; }
+.validation-summary-valid { display: none; }
+.turno-options { display: flex; flex-wrap: wrap; gap: .75rem; }
+.turno-option { display: flex; align-items: center; gap: .55rem; min-width: 7.5rem; padding: .8rem 1rem; border: 1px solid #dce2ed; border-radius: .7rem; background: #fff; cursor: pointer; }
+.turno-option:has(input:checked) { border-color: var(--nova-blue); background: var(--nova-sky); color: #173f93; }
+.scholarship-switch { padding: 1rem 1rem 1rem 3.5rem; border-radius: .7rem; background: #f4f7fc; }
+.info-panel { position: sticky; top: 1.5rem; padding: 1.6rem; color: #dfe9ff; border-radius: 1rem; background: var(--nova-navy); }
+.info-panel code { color: #9fc0ff; }
+.empty-state { padding: 4.5rem 1.5rem; }
+.empty-icon, .success-mark { display: grid; place-items: center; margin: 0 auto 1.3rem; width: 4rem; height: 4rem; border-radius: 50%; font-size: 2rem; font-weight: 700; color: var(--nova-blue); background: var(--nova-sky); }
+.success-mark { color: #157347; background: #ddf4e7; }
+.table thead th { padding: 1rem; color: #5f6b7e; font-size: .78rem; letter-spacing: .05em; text-transform: uppercase; background: #f7f9fc; border-bottom: 0; }
+.table tbody td { padding: 1rem; }
+.id-badge { color: var(--nova-blue); font-weight: 700; }
+.confirmation-wrap { max-width: 760px; margin: 0 auto; }
+.details-list dt, .details-list dd { padding-top: .8rem; padding-bottom: .8rem; border-bottom: 1px solid #edf0f5; }
+.details-list dt { color: #677286; }
+.demo-card pre { padding: 1rem; border-radius: .6rem; color: #dbe7ff; background: #14213a; overflow-x: auto; }
+.footer { background: #fff; }
+
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}

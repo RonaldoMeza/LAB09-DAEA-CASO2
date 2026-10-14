@@ -1,0 +1,54 @@
+# Compilación de .NET
+[Bb]in/
+[Oo]bj/
+artifacts/
+
+# Visual Studio y archivos de usuario
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.rsuser
+
+# Visual Studio Code / JetBrains Rider
+.vscode/
+.idea/
+*.sln.iml
+
+# Resultados de pruebas y cobertura
+[Tt]est[Rr]esult*/
+TestResults/
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Paquetes y herramientas locales
+packages/
+.nuget/
+.dotnet/
+.store/
+
+# Logs, temporales y sistema operativo
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+Thumbs.db
+.DS_Store
+
+# Publicación local
+publish/
+*.pubxml.user
+
+# Secretos, variables locales y certificados
+.env
+.env.*
+!.env.example
+secrets.json
+appsettings.Local.json
+*.pfx
+*.p12
+*.snk
